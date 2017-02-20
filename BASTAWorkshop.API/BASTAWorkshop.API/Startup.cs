@@ -25,9 +25,9 @@ namespace BASTAWorkshop.API
 
             config.EnableSwagger(c =>
              {
-                 c.SingleApiVersion("v1", "BASTAWorkshop.API");
-             })
-                .EnableSwaggerUi();
+                 c.SingleApiVersion("v1", "BASTA Spring 2017 Workshop API");
+             }).EnableSwaggerUi();
+
             app.UseWebApi(config);
         }
     }
