@@ -31,12 +31,13 @@ namespace BASTAWorkshop.API
             var sessionId = Guid.NewGuid();
             session.Id = sessionId;
 
+            /*
             session.Speakers.ForEach(s =>
             {
                 var speakerId = Guid.NewGuid();
                 s.Id = speakerId;
             });
-
+            */
             _database.TryAdd(sessionId, session);
 
             return session;
