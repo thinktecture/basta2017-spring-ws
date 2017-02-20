@@ -7,4 +7,12 @@ if (environment.production) {
     enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+let bootstrapApp = () => {
+    platformBrowserDynamic().bootstrapModule(AppModule);
+};
+
+if (window.cordova) {
+    document.addEventListener('deviceready', bootstrapApp.bind(this), false);
+} else {
+    bootstrapApp();
+}
