@@ -1,0 +1,16 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Title</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let session of sessions">
+            <td>{{session.id}}</td>
+            <td>{{session.title}}</td>
+            <td>{{session.description}}</td>
+        </tr>
+    </tbody>
+</table>
