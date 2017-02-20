@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Local sample file</title>
+</head>
+<body>
+    <h1>This is a local file for testing purposes</h1>
+    <h2>This page can interact with the application</h2>
+
+    <div id="interface-area">
+        <p>Message area:</p>
+    </div>
+    <br/>
+    <div>
+        <label>The value of this text box can be fetched from the application:</label>
+        <input type="text" id="retrieve-text" value="Initial value"/>
+    </div>
+    <br />
+    <div>
+        <label>You can send a message to the host application and show it there:</label>
+        <input type="text" id="apphost-message" value="Hello World!" />
+        <input type="button" value="Send to host application" onclick="window.applicationInterface.showMessage();" />
+    </div>
+
+    <script type="text/javascript" src="./ApplicationInterface.js"></script>
+</body>
+</html>
