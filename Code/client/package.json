@@ -16,7 +16,9 @@
     "build-mobile-ios": "npm run build && npm run prepare-mobile && cd dist/mobile && cordova prepare ios && npm run generate-mobile-assets && cordova build ios && cd ../..",
     "build-mobile-android": "npm run build && npm run prepare-mobile && cd dist/mobile && cordova prepare android && npm run generate-mobile-assets && cordova build android && cd ../..",
     "build-mobile-windows": "npm run build && npm run prepare-mobile && cd dist/mobile && cordova prepare windows && npm run generate-mobile-assets && cordova build windows && cd ../..",
-    "start-mobile-ios": "cd dist/mobile && cordova prepare && cordova emulate ios && cd ../.."
+    "start-mobile-ios": "cd dist/mobile && cordova prepare && cordova emulate ios && cd ../..",
+    "prepare-electron": "mkdirp ./tmp/web && ncp build-assets/desktop tmp && ncp dist/web tmp/web",
+    "build-desktop": "npm run build && npm run prepare-electron && electron-packager ./tmp/ --all --asar --electron-version=1.4.15 --icon=\"build-assets/resources/icon\" --out=./dist/desktop/"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +33,7 @@
     "@types/cordova": "^0.0.34",
     "bootstrap": "4.0.0-alpha.6",
     "core-js": "^2.4.1",
+    "electron-packager": "^8.5.2",
     "rxjs": "^5.1.0",
     "zone.js": "^0.7.6"
   },
