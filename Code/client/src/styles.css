@@ -1,3 +1,15 @@
-.big-margin-top{
-    margin-top:40px;
+.big-margin-top {
+    margin-top: 40px;
+}
+
+.navbar {
+    background-color: #FC3B3D;
+}
+
+.navbar .nav-link {
+    color: white;
+}
+
+.navbar .navbar-brand {
+    color: white;
 }

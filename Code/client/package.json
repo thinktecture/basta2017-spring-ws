@@ -6,9 +6,17 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "clean": "rimraf node_modules dist tmp && npm cache clean",
+    "clean-install": "npm run clean && npm install",
+    "clean-start": "npm run clean-install && npm start",
+    "build": "rimraf dist && ng build --output-path=\"dist/web\" --base-href=\".\"",
+    "generate-mobile-assets": "cd dist/mobile && cordova-icon --icon=\"../../build-assets/resources/icon.png\" && cordova-splash --splash=\"../../build-assets/resources/splash.png\"",
+    "prepare-mobile": "mkdirp dist/mobile/www && ncp dist/web dist/mobile/www && ncp build-assets/mobile dist/mobile",
+    "build-mobile": "npm run build && npm run prepare-mobile && cd dist/mobile && cordova prepare && cd ../.. && npm run generate-mobile-assets && cd dist/mobile cordova build && cd ../..",
+    "build-mobile-ios": "npm run build && npm run prepare-mobile && cd dist/mobile && cordova prepare ios && npm run generate-mobile-assets && cordova build ios && cd ../..",
+    "build-mobile-android": "npm run build && npm run prepare-mobile && cd dist/mobile && cordova prepare android && npm run generate-mobile-assets && cordova build android && cd ../..",
+    "build-mobile-windows": "npm run build && npm run prepare-mobile && cd dist/mobile && cordova prepare windows && npm run generate-mobile-assets && cordova build windows && cd ../..",
+    "start-mobile-ios": "cd dist/mobile && cordova prepare && cordova emulate ios && cd ../.."
   },
   "private": true,
   "dependencies": {
@@ -31,6 +39,9 @@
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0-beta.4",
+    "cordova": "^6.5.0",
+    "cordova-icon": "^0.9.1",
+    "cordova-splash": "^0.9.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
     "karma": "~1.4.1",
@@ -39,7 +50,10 @@
     "karma-coverage-istanbul-reporter": "^0.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "mkdirp": "^0.5.1",
+    "ncp": "^2.0.0",
     "protractor": "~5.1.0",
+    "rimraf": "^2.6.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
     "typescript": "~2.0.0"
