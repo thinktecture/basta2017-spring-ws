@@ -13,3 +13,7 @@
 .navbar .navbar-brand {
     color: white;
 }
+
+.some-margin-top {
+  margin-top: 20px;
+}
