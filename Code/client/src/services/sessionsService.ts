@@ -29,4 +29,24 @@ export class SessionsService {
 
     }
 
+    createSession(value: {title: string, description: string}) : Observable<boolean> {
+        return this._http.post(this._composeUrl('sessions/details'),value)
+            .map(response => response.ok);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
