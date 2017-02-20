@@ -1,4 +1,4 @@
-<form *ngIf="addSession" [formGroup]="addSession" (ngSubmit)="formSubmit()" novalidate>
+<form class="some-margin-top" *ngIf="addSession" [formGroup]="addSession" (ngSubmit)="formSubmit()" novalidate>
     <div class="form-group">
         <label for="input-title">Title</label>
         <input type="text" class="form-control" name="title" id="input-title" formControlName="title"
@@ -9,5 +9,5 @@
         <input type="text" class="form-control" name="description" id="input-description" formControlName="description"
                placeholder="Enter session description ..." />
     </div>
-    <button type="submit">Create Session</button>
+    <button class="btn btn-secondary" type="submit">Create Session</button>
 </form>
