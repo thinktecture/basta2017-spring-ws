@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 
 namespace BASTAWorkshop.API
@@ -29,10 +28,16 @@ namespace BASTAWorkshop.API
         [ActionName("details")]
         public Session AddSession(Session session)
         {
-            var id = Guid.NewGuid();
-            session.Id = id;
+            var sessionId = Guid.NewGuid();
+            session.Id = sessionId;
 
-            _database.TryAdd(id, session);
+            session.Speakers.ForEach(s =>
+            {
+                var speakerId = Guid.NewGuid();
+                s.Id = speakerId;
+            });
+
+            _database.TryAdd(sessionId, session);
 
             return session;
         }
